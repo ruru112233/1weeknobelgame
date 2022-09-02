@@ -8,6 +8,9 @@ public class MessageManager : MonoBehaviour
     [SerializeField]
     private Navigator navigator = null;
 
+    [SerializeField]
+    private GameObject messageText = null;
+
     async void Start()
     {
         await StartMessage();
@@ -16,6 +19,7 @@ public class MessageManager : MonoBehaviour
     async Task StartMessage()
     {
         await Task.Delay(1000);
+        messageText.SetActive(true);
 
         await navigator.Message(new string[] { "これはテストです。"
                                               ,"らららら～♪"
@@ -23,5 +27,8 @@ public class MessageManager : MonoBehaviour
                                               ,"ここにメッセージを書くよ"
                                               ,"あとは何を書いたらいいか分からないからテキトーに長い文章を書きたいけど、ほんと何を書いたらいいのか分からないんだよな～。"
         　　　　　　　　　　　　　　　　　　　,"一旦、動作確認はこんな感じかな。。。"});
+
+        messageText.SetActive(false);
+        
     }
 }
