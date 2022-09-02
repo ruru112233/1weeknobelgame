@@ -11,10 +11,11 @@ public class Navigator : MonoBehaviour
         // テキストComponentを取得する
         Text messageText = GameObject.FindWithTag("MessageText").GetComponent<Text>();
 
-        Debug.Log(messageText);
+        TextFader textFader = GameObject.FindWithTag("MessageText").GetComponent<TextFader>();
 
         foreach (string message_str in messages_str)
         {
+            textFader.enabled = true;
             // メッセージテキストをセット
             messageText.text = message_str;
 
