@@ -5,6 +5,7 @@ public class SceneMoveScript : MonoBehaviour
     public int sceneNo = 0;
     public void sceneMove()
     {
+        AudioManager.instance.PlaySE(0);
         MessageManager messageManager = GameObject.FindWithTag("MessageManager").GetComponent<MessageManager>();
         
         switch (sceneNo)
