@@ -1,11 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 
 public class Navigator : MonoBehaviour
 {
+    // コルーチン用
+    public void MessageCol(string message)
+    {
+        Text messageText = GameObject.FindWithTag("MessageText").GetComponent<Text>();
+        messageText.text = message;
+    }
+
     public async Task Message(string[] messages_str)
     {
         // テキストComponentを取得する
@@ -35,12 +40,12 @@ public class Navigator : MonoBehaviour
     }
 
     // メッセージとスプライトオブジェクトが同時に表示する場合
-    public async Task MessageObject(string[] messages_str, GameObject obj)
+    public async Task MessageObject(string[] messages_str, Sprite sprite)
     {
         // テキストCompnentを取得する
         Text messageText = GameObject.FindWithTag("MessageText").GetComponent<Text>();
 
-        obj.SetActive(true);
+        setBackGround(sprite, true);
 
         foreach (string message_str in messages_str)
         {
@@ -64,7 +69,19 @@ public class Navigator : MonoBehaviour
             }
         }
 
-        obj.SetActive(false);
+        setBackGround(sprite, false);
+    }
+
+    public void setBackGround(Sprite sprite, bool showFlag)
+    {
+        GameObject backGroundObj = GameManager.instance.backGroundImage;
+        backGroundObj.SetActive(showFlag);
+
+        if (!showFlag) return;
+
+        Image image = backGroundObj.GetComponent<Image>();
+        image.sprite = sprite;
+
     }
 
 }
