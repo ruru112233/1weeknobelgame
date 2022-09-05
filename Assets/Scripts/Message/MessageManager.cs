@@ -187,6 +187,15 @@ public class MessageManager : MonoBehaviour
         selectButtonManager.setSelectButton(2, "パスをする", 7);
     }
 
+    // 分岐④
+    void select4()
+    {
+        navigator.setBackGround(spriteManager.basuke_court, true);
+        selectButtonManager.setSelectButton(1, "わらう", 8);
+        selectButtonManager.setSelectButton(1, "おじさんズラが取れてるよ", 8);
+        selectButtonManager.setSelectButton(1, "気づかないフリをしてシュート", 9);
+    }
+
     public void Scene1Start()
     {
         selectButtonManager.selectButtonOff();
@@ -420,6 +429,56 @@ public class MessageManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
+
+        messageText.SetActive(false);
+    }
+
+    public void Scene8Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene8());
+    }
+
+    public IEnumerator Scene8()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("おじさんが怒って追いかけてくる。");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【おじさん】何してくれてんやー！");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】え！");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("す、すみません！");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("コートを追いかけ回されるナマケモノ");
+
+        messageText.SetActive(false);
+    }
+
+    public void Scene9Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene9());
+    }
+
+    public IEnumerator Scene9()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("敵のチームのひとりが笑ってしまい、おじさんにおいかけられて1人退場");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】あ...すみません");
 
         messageText.SetActive(false);
     }

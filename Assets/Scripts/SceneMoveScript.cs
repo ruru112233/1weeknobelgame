@@ -31,6 +31,12 @@ public class SceneMoveScript : MonoBehaviour
             case 7:
                 messageManager.Scene7Start();
                 break;
+            case 8:
+                messageManager.Scene8Start();
+                break;
+            case 9:
+                messageManager.Scene9Start();
+                break;
         }
 
     }
