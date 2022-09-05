@@ -45,6 +45,8 @@ public class MessageManager : MonoBehaviour
 
     private IEnumerator Scene0()
     {
+        AudioManager.instance.PlayBGM(0);
+
         navigator.MessageCol("森の中でいつも寝て怠けるだけの、同じ毎日をすごしていたなまけものがいた。");
         clickFlag = false;
 
@@ -117,11 +119,12 @@ public class MessageManager : MonoBehaviour
         clickFlag = false;
         navigator.setBackGround(spriteManager.mori_manga, false);
         navigator.MessageCol("...");
+
         
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("目を覚ました。ナマケモノ。");
-        
+
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("【ナマケモノ】え!?");
@@ -132,6 +135,7 @@ public class MessageManager : MonoBehaviour
         
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
+        AudioManager.instance.PlayBGM(1);
         navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("ナマケモノは漫画の中の女性の姿になっていた。");
         
