@@ -84,4 +84,28 @@ public class Navigator : MonoBehaviour
 
     }
 
+    // ç∂ë§êlï®ÇÃê›íË
+    public void setLeftImage(Sprite sprite, bool showFlag)
+    {
+        GameObject imageObj = GameManager.instance.leftImage;
+        imageObj.SetActive(showFlag);
+
+        if (!showFlag) return;
+
+        Image image = imageObj.GetComponent<Image>();
+        image.sprite = sprite;
+    }
+
+    // âEë§êlï®ÇÃê›íË
+    public void setrightImage(Sprite sprite, bool showFlag)
+    {
+        GameObject imageObj = GameManager.instance.rightImage;
+        imageObj.SetActive(showFlag);
+
+        if (!showFlag) return;
+
+        Image image = imageObj.GetComponent<Image>();
+        image.sprite = sprite;
+    }
+
 }
