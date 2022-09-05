@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject backGroundImage = null;
+    public GameObject leftImage = null; // ¶‘¤‚Ì—§‚¿ŠG
+    public GameObject rightImage = null; // ‰E‘¤‚Ì—§‚¿ŠG
 
-    
 
     private void Awake()
     {
@@ -33,8 +34,9 @@ public class GameManager : MonoBehaviour
 
     void GameStart() 
     {
-        GameObject backGroundObj = GameObject.FindWithTag("BackGroundImage");
-        backGroundObj.SetActive(false);
+        backGroundImage.SetActive(false);
+        leftImage.SetActive(false);
+        rightImage.SetActive(false);
     }
 
     void FadeIn()

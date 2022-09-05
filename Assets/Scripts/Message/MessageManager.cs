@@ -138,10 +138,12 @@ public class MessageManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("【ナマケモノのチームメイトA】まい!シュート!!");
+        navigator.setLeftImage(spriteManager.kantoku_dere, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("【ナマケモノ】え!?");
+        navigator.setLeftImage(spriteManager.kantoku_dere, false);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
