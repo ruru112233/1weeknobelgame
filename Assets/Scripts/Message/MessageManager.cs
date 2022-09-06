@@ -42,9 +42,17 @@ public class MessageManager : MonoBehaviour
 
     }
 
-    private IEnumerator Scene0()
+    public void Scene0Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene0());
+    }
+
+    public IEnumerator Scene0()
     {
         AudioManager.instance.PlayBGM(0);
+
+        navigator.setBackGround(spriteManager.mori_manga, false);
 
         navigator.MessageCol("森の中でいつも寝て怠けるだけの、同じ毎日をすごしていたなまけものがいた。");
         clickFlag = false;
@@ -115,6 +123,7 @@ public class MessageManager : MonoBehaviour
         navigator.MessageCol("その時とてつもなく強い光に覆われる。");
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        AudioManager.instance.StopMusic();
         clickFlag = false;
         navigator.setBackGround(spriteManager.mori_manga, false);
         navigator.MessageCol("...");
@@ -192,8 +201,59 @@ public class MessageManager : MonoBehaviour
     {
         navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "わらう", 8);
-        selectButtonManager.setSelectButton(1, "おじさんズラが取れてるよ", 8);
-        selectButtonManager.setSelectButton(1, "気づかないフリをしてシュート", 9);
+        selectButtonManager.setSelectButton(2, "おじさんズラが取れてるよ", 8);
+        selectButtonManager.setSelectButton(3, "気づかないフリをしてシュート", 9);
+    }
+
+    // 分岐⑤
+    void select5()
+    {
+        navigator.setBackGround(spriteManager.basuke_court, true);
+        selectButtonManager.setSelectButton(1, "シュートする", 10);
+        selectButtonManager.setSelectButton(2, "ドリブルする", 11);
+    }
+
+    // 分岐⑥
+    void select6()
+    {
+        navigator.setBackGround(spriteManager.basuke_court, true);
+        selectButtonManager.setSelectButton(1, "シュートする", 13);
+        selectButtonManager.setSelectButton(2, "パスする", 13);
+        selectButtonManager.setSelectButton(3, "審判にパスする", 21);
+    }
+
+    // 分岐⑦
+    void select7()
+    {
+        navigator.setBackGround(spriteManager.basuke_court, true);
+        selectButtonManager.setSelectButton(1, "パスする", 14);
+        selectButtonManager.setSelectButton(2, "シュートする", 16);
+        selectButtonManager.setSelectButton(3, "まねする", 17);
+    }
+
+    // 分岐⑧
+    void select8()
+    {
+        navigator.setBackGround(spriteManager.basuke_court, true);
+        selectButtonManager.setSelectButton(1, "にらむ", 15);
+        selectButtonManager.setSelectButton(2, "シュートする", 18);
+        selectButtonManager.setSelectButton(3, "ゾーンに入る", 19);
+    }
+
+    // 分岐⑨
+    void select9()
+    {
+        navigator.setBackGround(spriteManager.basuke_court, true);
+        selectButtonManager.setSelectButton(1, "リバウンドしてパス", 12);
+        selectButtonManager.setSelectButton(2, "リバウンドしてシュート", 12);
+        selectButtonManager.setSelectButton(3, "ダンク", 12);
+    }
+
+    void retry()
+    {
+        messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
+        selectButtonManager.setSelectButton(1, "もう一度遊ぶ", 0);
     }
 
     public void Scene1Start()
@@ -372,6 +432,8 @@ public class MessageManager : MonoBehaviour
         clickFlag = false;
         navigator.MessageCol("【ナマケモノ】あ...");
 
+        select4();
+
         messageText.SetActive(false);
     }
 
@@ -396,6 +458,8 @@ public class MessageManager : MonoBehaviour
         navigator.MessageCol("歓声をあびる。");
 
         messageText.SetActive(false);
+
+        Scene13Start();
     }
 
     public void Scene6Start()
@@ -413,6 +477,8 @@ public class MessageManager : MonoBehaviour
         clickFlag = false;
 
         messageText.SetActive(false);
+
+        Scene13Start();
     }
 
     public void Scene7Start()
@@ -429,8 +495,11 @@ public class MessageManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
-
+        navigator.MessageCol("カウンター(シュート入れられてからの速攻攻撃)を行う");
+        
         messageText.SetActive(false);
+
+        select6();
     }
 
     public void Scene8Start()
@@ -462,6 +531,8 @@ public class MessageManager : MonoBehaviour
         navigator.MessageCol("コートを追いかけ回されるナマケモノ");
 
         messageText.SetActive(false);
+
+        retry();
     }
 
     public void Scene9Start()
@@ -481,6 +552,342 @@ public class MessageManager : MonoBehaviour
         navigator.MessageCol("【ナマケモノ】あ...すみません");
 
         messageText.SetActive(false);
+
+        select5();
+    }
+
+    public void Scene10Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene10());
+    }
+
+    public IEnumerator Scene10()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("鳥が乱入");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】え…");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("シュートが外れる");
+
+        messageText.SetActive(false);
+
+        select9();
+    }
+
+    public void Scene11Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene11());
+    }
+
+    public IEnumerator Scene11()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("上手く敵を交わしてドリブルしてシュート");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】あ...");
+
+        messageText.SetActive(false);
+
+        StartCoroutine(TrueEnd());
+    }
+
+    public void Scene12Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene12());
+    }
+
+    public IEnumerator Scene12()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("カウンターを受けて敵のシュートが決まる");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】あ...");
+
+        messageText.SetActive(false);
+
+        StartCoroutine(BadEnd());
+    }
+
+    public void Scene13Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene13());
+    }
+
+    public IEnumerator Scene13()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("オーラをまとったような敵が前に立ふさがる");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        
+        messageText.SetActive(false);
+
+        select7();
+    }
+
+    public void Scene14Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene14());
+    }
+
+    public IEnumerator Scene14()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("犬が乱入してきて犬にパスカットされて敵ボールになる");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        
+        messageText.SetActive(false);
+
+        StartCoroutine(Scene12());
+    }
+
+    public void Scene15Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene15());
+    }
+
+    public IEnumerator Scene15()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("ボールを取られてシュートされる");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+
+        messageText.SetActive(false);
+
+        StartCoroutine(BadEnd());
+    }
+
+    public void Scene16Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene16());
+    }
+
+    public IEnumerator Scene16()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("外す");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+
+        messageText.SetActive(false);
+
+        StartCoroutine(Scene12());
+    }
+
+    public void Scene17Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene17());
+    }
+
+    public IEnumerator Scene17()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("ゾーンに入って抜く");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+
+        messageText.SetActive(false);
+
+        select8();
+    }
+
+    public void Scene18Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene18());
+    }
+
+    public IEnumerator Scene18()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("シュートを外すが仲間がリバウンドをとってシュートをいれる");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+
+        messageText.SetActive(false);
+
+        StartCoroutine(TrueEnd());
+    }
+
+    public void Scene19Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene19());
+    }
+
+    public IEnumerator Scene19()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("ゴールが決まる");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+
+        messageText.SetActive(false);
+
+        StartCoroutine(HappyEnd());
+    }
+
+    public void Scene20Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene20());
+    }
+
+    public IEnumerator Scene20()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("カウンター(シュート入れられてからの速攻攻撃)を行う");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+
+        messageText.SetActive(false);
+    }
+
+    public void Scene21Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene21());
+    }
+
+    public IEnumerator Scene21()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("審判がシュートしてくれる");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("ゴール");
+
+        messageText.SetActive(false);
+    }
+
+    public IEnumerator BadEnd()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("終了の笛がなる");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("ナマケモノのチームは敗北した。\r\nナマケモノはナマケモノの姿に戻ってしまう");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【チームメイト】きゃあー！！");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("みんなに逃げられたり、物を投げられるナマケモノ");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】そ、そんなぁ");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("END3\r\n負けEND");
+
+        retry();
+
+    }
+
+    public IEnumerator TrueEnd()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("終了の笛がなる");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("ナマケモノのチームは勝ったと思った。");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("しかし目が覚めると森の中にいた。");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("ナマケモノはナマケモノの姿に戻ってしまっていた。");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】なんだぁ夢かぁ、もう少し寝ようかな...zzz");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("END1\r\n寝落ちEND");
+
+        retry();
+
+    }
+
+    public IEnumerator HappyEnd()
+    {
+        messageText.SetActive(true);
+        navigator.MessageCol("終了の笛がなる。");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("ナマケモノのチームは勝った。");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("歓声が上がる");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("ナマケモノはチームメイトに囲まれる");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("嬉しそうにするチームメイトたち");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】やったね！");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("ナマケモノは人として幸せに生きていったとさ");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("END2\r\n勝ちEND");
+
+        retry();
+
     }
 
 }
