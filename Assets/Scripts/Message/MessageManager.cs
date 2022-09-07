@@ -128,7 +128,6 @@ public class MessageManager : MonoBehaviour
         navigator.setBackGround(spriteManager.mori_manga, false);
         navigator.MessageCol("...");
 
-        
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("目を覚ました。ナマケモノ。");
@@ -150,7 +149,8 @@ public class MessageManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("【ナマケモノのチームメイトA】まい!シュート!!");
-        navigator.setLeftImage(spriteManager.kantoku_dere, true);
+        navigator.setLeftImage(spriteManager.ippan_senshu, true);
+        
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -174,7 +174,6 @@ public class MessageManager : MonoBehaviour
     // 分岐①
     void select1()
     {
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "シュートをする", 1);
         selectButtonManager.setSelectButton(2, "ドリブルをする", 2);
         selectButtonManager.setSelectButton(3, "なにもしない", 3);
@@ -183,7 +182,6 @@ public class MessageManager : MonoBehaviour
     // 分岐②
     void select2()
     {
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "シュートをする", 4);
         selectButtonManager.setSelectButton(2, "ドリブルをする", 5);
     }
@@ -191,7 +189,6 @@ public class MessageManager : MonoBehaviour
     // 分岐③
     void select3()
     {
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "シュートをする", 6);
         selectButtonManager.setSelectButton(2, "パスをする", 7);
     }
@@ -199,7 +196,6 @@ public class MessageManager : MonoBehaviour
     // 分岐④
     void select4()
     {
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "わらう", 8);
         selectButtonManager.setSelectButton(2, "おじさんズラが取れてるよ", 8);
         selectButtonManager.setSelectButton(3, "気づかないフリをしてシュート", 9);
@@ -208,7 +204,6 @@ public class MessageManager : MonoBehaviour
     // 分岐⑤
     void select5()
     {
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "シュートする", 10);
         selectButtonManager.setSelectButton(2, "ドリブルする", 11);
     }
@@ -216,7 +211,6 @@ public class MessageManager : MonoBehaviour
     // 分岐⑥
     void select6()
     {
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "シュートする", 13);
         selectButtonManager.setSelectButton(2, "パスする", 13);
         selectButtonManager.setSelectButton(3, "審判にパスする", 21);
@@ -225,7 +219,6 @@ public class MessageManager : MonoBehaviour
     // 分岐⑦
     void select7()
     {
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "パスする", 14);
         selectButtonManager.setSelectButton(2, "シュートする", 16);
         selectButtonManager.setSelectButton(3, "まねする", 17);
@@ -234,7 +227,6 @@ public class MessageManager : MonoBehaviour
     // 分岐⑧
     void select8()
     {
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "にらむ", 15);
         selectButtonManager.setSelectButton(2, "シュートする", 18);
         selectButtonManager.setSelectButton(3, "ゾーンに入る", 19);
@@ -243,7 +235,6 @@ public class MessageManager : MonoBehaviour
     // 分岐⑨
     void select9()
     {
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "リバウンドしてパス", 12);
         selectButtonManager.setSelectButton(2, "リバウンドしてシュート", 12);
         selectButtonManager.setSelectButton(3, "ダンク", 12);
@@ -252,7 +243,6 @@ public class MessageManager : MonoBehaviour
     void retry()
     {
         messageText.SetActive(true);
-        navigator.setBackGround(spriteManager.basuke_court, true);
         selectButtonManager.setSelectButton(1, "もう一度遊ぶ", 0);
     }
 
@@ -270,7 +260,7 @@ public class MessageManager : MonoBehaviour
         // 選択ボタンの非表示
         //selectButtonManager.selectButtonOff();
 
-        navigator.setBackGround(spriteManager.basuke_court, true);
+        navigator.setBackGround(spriteManager.basuke_goal, true);
 
         navigator.MessageCol("シュートがスポッと音をたててかっこよく決まる。");
         clickFlag = false;
@@ -329,6 +319,7 @@ public class MessageManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("ゴール下でシュートを決めるナマケモノ。");
+        navigator.setBackGround(spriteManager.basuke_goal, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -336,31 +327,35 @@ public class MessageManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
-        navigator.MessageCol("【敵チームA】どう考えてもトラベリングでしょう!");
+        navigator.MessageCol("【敵チームA】どう考えてもトラベリングでしょう!\r\nなんで笛を鳴らさないの!");
+        navigator.setLeftImage(spriteManager.ippan_senshu, true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
-        navigator.MessageCol("なんで笛を鳴らさないの!");
-
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
-        clickFlag = false;
-        navigator.MessageCol("審判に抗議する敵チームのとぼけた顔をする審判員。");
+        navigator.MessageCol("審判に抗議したが、とぼけた顔をする審判員。");
+        navigator.setLeftImage(spriteManager.ippan_senshu, false);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("【審判員】さ、さっきのはセーフだよ。僕は歩いたところを見ていない。");
+        navigator.setrightImage(spriteManager.shinpan, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("【敵チームB】はぁ!ふざけんな!");
+        navigator.setLeftImage(spriteManager.ippan_senshu, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("【審判員】はい、レッドカード!君退場!");
+        navigator.setrightImage(spriteManager.shinpan, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("1人脱落。");
+        navigator.setLeftImage(spriteManager.ippan_senshu, false);
+        navigator.setrightImage(spriteManager.shinpan, false);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -448,6 +443,7 @@ public class MessageManager : MonoBehaviour
         messageText.SetActive(true);
         navigator.MessageCol("ドリブルが成功してシュートが入る。");
         clickFlag = false;
+        navigator.setBackGround(spriteManager.basuke_goal, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -471,6 +467,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene6()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_goal, true);
         navigator.MessageCol("シュートが決まる。");
         clickFlag = false;
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
@@ -490,6 +487,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene7()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("パスカットされる。");
         clickFlag = false;
 
@@ -511,6 +509,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene8()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("おじさんが怒って追いかけてくる。");
         clickFlag = false;
 
@@ -520,15 +519,15 @@ public class MessageManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
-        navigator.MessageCol("【ナマケモノ】え！");
-
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
-        clickFlag = false;
-        navigator.MessageCol("す、すみません！");
+        navigator.MessageCol("【ナマケモノ】え！\r\nす、すみません！");
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("コートを追いかけ回されるナマケモノ");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("もう試合どころではない...\r\n～ゲームオーバー～");
 
         messageText.SetActive(false);
 
@@ -544,6 +543,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene9()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("敵のチームのひとりが笑ってしまい、おじさんにおいかけられて1人退場");
         clickFlag = false;
 
@@ -565,6 +565,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene10()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_goal, true);
         navigator.MessageCol("鳥が乱入");
         clickFlag = false;
 
@@ -590,6 +591,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene11()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_goal, true);
         navigator.MessageCol("上手く敵を交わしてドリブルしてシュート");
         clickFlag = false;
 
@@ -611,6 +613,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene12()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("カウンターを受けて敵のシュートが決まる");
         clickFlag = false;
 
@@ -632,11 +635,14 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene13()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("オーラをまとったような敵が前に立ふさがる");
         clickFlag = false;
+        navigator.setLeftImage(spriteManager.tokushu_senshu, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
-        
+        navigator.setLeftImage(spriteManager.ippan_senshu, false);
+
         messageText.SetActive(false);
 
         select7();
@@ -651,6 +657,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene14()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("犬が乱入してきて犬にパスカットされて敵ボールになる");
         clickFlag = false;
 
@@ -670,6 +677,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene15()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("ボールを取られてシュートされる");
         clickFlag = false;
 
@@ -689,6 +697,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene16()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_goal, true);
         navigator.MessageCol("外す");
         clickFlag = false;
 
@@ -708,6 +717,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene17()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("ゾーンに入って抜く");
         clickFlag = false;
 
@@ -727,6 +737,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene18()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_goal, true);
         navigator.MessageCol("シュートを外すが仲間がリバウンドをとってシュートをいれる");
         clickFlag = false;
 
@@ -746,6 +757,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene19()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_goal, true);
         navigator.MessageCol("ゴールが決まる");
         clickFlag = false;
 
@@ -765,6 +777,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene20()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("カウンター(シュート入れられてからの速攻攻撃)を行う");
         clickFlag = false;
 
@@ -782,12 +795,15 @@ public class MessageManager : MonoBehaviour
     public IEnumerator Scene21()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_goal, true);
+        navigator.setrightImage(spriteManager.shinpan, true);
         navigator.MessageCol("審判がシュートしてくれる");
         clickFlag = false;
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("ゴール");
+        navigator.setrightImage(spriteManager.shinpan, false);
 
         messageText.SetActive(false);
     }
@@ -795,6 +811,7 @@ public class MessageManager : MonoBehaviour
     public IEnumerator BadEnd()
     {
         messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.MessageCol("終了の笛がなる");
         clickFlag = false;
 
@@ -805,10 +822,12 @@ public class MessageManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("【チームメイト】きゃあー！！");
+        navigator.setLeftImage(spriteManager.ippan_senshu, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("みんなに逃げられたり、物を投げられるナマケモノ");
+        navigator.setLeftImage(spriteManager.ippan_senshu, false);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -816,7 +835,7 @@ public class MessageManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
-        navigator.MessageCol("END3\r\n負けEND");
+        navigator.MessageCol("END3\r\n敗北END");
 
         retry();
 
@@ -827,6 +846,7 @@ public class MessageManager : MonoBehaviour
         messageText.SetActive(true);
         navigator.MessageCol("終了の笛がなる");
         clickFlag = false;
+        navigator.setBackGround(spriteManager.mori_manga, false);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -834,6 +854,7 @@ public class MessageManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
+        navigator.setBackGround(spriteManager.mori_sleep, true);
         navigator.MessageCol("しかし目が覚めると森の中にいた。");
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
@@ -868,11 +889,7 @@ public class MessageManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
-        navigator.MessageCol("ナマケモノはチームメイトに囲まれる");
-
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
-        clickFlag = false;
-        navigator.MessageCol("嬉しそうにするチームメイトたち");
+        navigator.MessageCol("ナマケモノはチームメイトに囲まれる\r\n嬉しそうにするチームメイトたち");
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -884,7 +901,7 @@ public class MessageManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
-        navigator.MessageCol("END2\r\n勝ちEND");
+        navigator.MessageCol("END2\r\n勝利END");
 
         retry();
 
