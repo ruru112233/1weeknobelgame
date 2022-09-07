@@ -16,4 +16,9 @@ public class SpriteManager : MonoBehaviour
     public Sprite ippan_senshu;
     public Sprite tokushu_senshu;
     public Sprite shinpan;
+
+    [Header("—‚Ìq—§‚¿ŠG")]
+    public Sprite onnanoko_hohoemi;
+    public Sprite onnanoko_shinken;
+    public Sprite onnanoko_odoroki;
 }
