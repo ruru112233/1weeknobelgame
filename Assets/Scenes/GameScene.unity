@@ -550,6 +550,9 @@ MonoBehaviour:
   mori_sleep: {fileID: 21300000, guid: 6ce7a395eb15a84439b590a585347dac, type: 3}
   kantoku_oko: {fileID: 21300000, guid: 229b63f7ed878bf4aabd0adf39cf18be, type: 3}
   kantoku_dere: {fileID: 21300000, guid: 75b2c129c7d3d7d4dbbd827d54456e85, type: 3}
+  ippan_senshu: {fileID: 21300000, guid: 359832a420187c34bae666573e2da973, type: 3}
+  tokushu_senshu: {fileID: 21300000, guid: b85aedd4e1a942848b3830be621b388d, type: 3}
+  shinpan: {fileID: 21300000, guid: e0ed76b28a8eae54ead5a403a16fb079, type: 3}
 --- !u!4 &687422708
 Transform:
   m_ObjectHideFlags: 0
