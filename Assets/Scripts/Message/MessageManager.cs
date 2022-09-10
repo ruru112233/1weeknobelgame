@@ -62,6 +62,7 @@ public class MessageManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
         navigator.MessageCol("【ナマケモノ】だるいなぁ〜");
+        navigator.setBackGround(spriteManager.mori_namakemono, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -233,7 +234,7 @@ public class MessageManager : MonoBehaviour
     {
         selectButtonManager.setSelectButton(1, "にらむ", 15);
         selectButtonManager.setSelectButton(2, "シュートする", 18);
-        selectButtonManager.setSelectButton(3, "ゾーンに入る", 19);
+        selectButtonManager.setSelectButton(3, "更にゾーンに入る", 19);
     }
 
     // 分岐⑨
@@ -247,7 +248,7 @@ public class MessageManager : MonoBehaviour
     // 分岐⑩
     void select10()
     {
-        selectButtonManager.setSelectButton(1, "右", 12);
+        selectButtonManager.setSelectButton(1, "右", 23);
         selectButtonManager.setSelectButton(2, "左", 22);
     }
 
@@ -386,7 +387,7 @@ public class MessageManager : MonoBehaviour
         clickFlag = false;
         navigator.MessageCol("ゲーム再開。");
 
-        messageText.SetActive(false);
+       // messageText.SetActive(false);
 
         select2();
     }
@@ -422,7 +423,7 @@ public class MessageManager : MonoBehaviour
         navigator.MessageCol("敵チームのボールカットに成功したナマケモノ。");
         navigator.setrightImage(spriteManager.onnanoko_hohoemi, true);
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
 
         select3();
     }
@@ -458,7 +459,7 @@ public class MessageManager : MonoBehaviour
         
         select4();
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
     }
 
     public void Scene5Start()
@@ -484,6 +485,7 @@ public class MessageManager : MonoBehaviour
         clickFlag = false;
         navigator.MessageCol("【観客】おぉー、スゲー！！");
         navigator.setrightImage(spriteManager.onnanoko_shinken, false);
+        navigator.setBackGround(spriteManager.basuke_court, true);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -492,7 +494,7 @@ public class MessageManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
-        navigator.MessageCol("【監督】さすがは「マイ」だ！私が教えただけのことはあるなぁ");
+        navigator.MessageCol("【監督】さすがは「マイちゃん」だ！私が教えただけのことはあるなぁ");
         navigator.setLeftImage(spriteManager.kantoku_dere, true);
 
 
@@ -506,7 +508,7 @@ public class MessageManager : MonoBehaviour
         clickFlag = false;
         navigator.MessageCol("【ナマケモノ】右か左か...どっちだ...");
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
 
         select10();
     }
@@ -532,7 +534,7 @@ public class MessageManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
 
         Scene13Start();
     }
@@ -547,16 +549,44 @@ public class MessageManager : MonoBehaviour
     {
         messageText.SetActive(true);
         navigator.setBackGround(spriteManager.basuke_court, true);
-        navigator.setrightImage(spriteManager.onnanoko_odoroki, true);
+        navigator.setrightImage(spriteManager.onnanoko_odoroki, false);
         navigator.setLeftImage(spriteManager.onnanoko_hohoemi, false);
         navigator.MessageCol("パスカットされる。");
         clickFlag = false;
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
+        navigator.MessageCol("【監督】おい、マイちゃんのパスを取るんじゃない！");
+        navigator.setLeftImage(spriteManager.kantoku_oko, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("そのまま、ゴールを決められてしまった...");
+        navigator.setLeftImage(spriteManager.kantoku_oko, false);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【監督】何やってるんだ！さっさと攻めろ！");
+        navigator.setLeftImage(spriteManager.kantoku_oko, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【監督】マイちゃん、ドンマイ！");
+        navigator.setLeftImage(spriteManager.kantoku_dere, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
         navigator.MessageCol("カウンター(シュート入れられてからの速攻攻撃)を行う");
-        
-        messageText.SetActive(false);
+        navigator.setLeftImage(spriteManager.kantoku_oko, false);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("ナマケモノにパスが回ってきた。");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+
+        //messageText.SetActive(false);
 
         select6();
     }
@@ -592,7 +622,7 @@ public class MessageManager : MonoBehaviour
         clickFlag = false;
         navigator.MessageCol("もう試合どころではない...\r\n～ゲームオーバー～");
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
 
         retry();
     }
@@ -617,7 +647,7 @@ public class MessageManager : MonoBehaviour
         navigator.MessageCol("【ナマケモノ】あ...すみません");
         navigator.setrightImage(spriteManager.onnanoko_odoroki, true);
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
 
         select5();
     }
@@ -646,7 +676,7 @@ public class MessageManager : MonoBehaviour
         clickFlag = false;
         navigator.MessageCol("シュートが外れる");
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
 
         select9();
     }
@@ -670,7 +700,7 @@ public class MessageManager : MonoBehaviour
         clickFlag = false;
         navigator.MessageCol("【ナマケモノ】あ...");
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
 
         StartCoroutine(TrueEnd());
     }
@@ -698,7 +728,7 @@ public class MessageManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
 
         StartCoroutine(BadEnd());
     }
@@ -804,12 +834,33 @@ public class MessageManager : MonoBehaviour
         navigator.setBackGround(spriteManager.basuke_court, true);
         navigator.setrightImage(spriteManager.onnanoko_shinken, true);
         navigator.setLeftImage(spriteManager.onnanoko_hohoemi, false);
-        navigator.MessageCol("ゾーンに入って抜く");
+        navigator.MessageCol("ナマケモノは、まねをしてゾーンに入った。");
         clickFlag = false;
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        navigator.MessageCol("【ナマケモノ】え...体が軽い！！");
+        clickFlag = false;
+        navigator.setrightImage(spriteManager.onnanoko_odoroki, true);
 
-        messageText.SetActive(false);
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        navigator.MessageCol("そのまま相手を抜き去る");
+        clickFlag = false;
+        navigator.setrightImage(spriteManager.onnanoko_odoroki, false);
+
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        navigator.MessageCol("【ナマケモノ】やったー！");
+        clickFlag = false;
+        navigator.setrightImage(spriteManager.onnanoko_hohoemi, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        navigator.MessageCol("しかし、また目の前にはさっきの敵が立ちふさがった...");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+
+        //messageText.SetActive(false);
 
         select8();
     }
@@ -890,16 +941,44 @@ public class MessageManager : MonoBehaviour
         navigator.setBackGround(spriteManager.basuke_goal, true);
         navigator.setrightImage(spriteManager.shinpan, false);
         navigator.setLeftImage(spriteManager.shinpan, true);
-        navigator.MessageCol("審判がシュートしてくれる");
+        navigator.MessageCol("【審判】え...");
         clickFlag = false;
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
-        navigator.MessageCol("ゴール");
+        navigator.MessageCol("審判とナマケモノは目が合った。");
         navigator.setrightImage(spriteManager.onnanoko_shinken, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】シュートォォォ！");
+        navigator.setLeftImage(spriteManager.shinpan, false);
+        navigator.setrightImage(spriteManager.onnanoko_odoroki, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【審判】は...はいぃぃぃ！");
+        navigator.setLeftImage(spriteManager.shinpan, true);
+        navigator.setrightImage(spriteManager.onnanoko_odoroki, false);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("なんと、審判がシュートをした。");
         navigator.setLeftImage(spriteManager.shinpan, false);
 
-        messageText.SetActive(false);
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("ボールは綺麗な放物線をえがき、ゴールに吸い込まれる形でボールが入った！");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】え！すごっ！");
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("そのとき...");
+
+        //messageText.SetActive(false);
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
@@ -954,9 +1033,73 @@ public class MessageManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
         clickFlag = false;
 
-        messageText.SetActive(false);
+        //messageText.SetActive(false);
 
         Scene13Start();
+    }
+
+    public void Scene23Start()
+    {
+        selectButtonManager.selectButtonOff();
+        StartCoroutine(Scene23());
+    }
+
+    public IEnumerator Scene23()
+    {
+        messageText.SetActive(true);
+        navigator.setBackGround(spriteManager.basuke_court, true);
+        navigator.setrightImage(spriteManager.onnanoko_shinken, false);
+        navigator.setLeftImage(spriteManager.ippan_senshu, false);
+        navigator.MessageCol("ナマケモノは右に動いた。しかし、敵はナマケモノを左から抜かれてしまった。");
+        clickFlag = false;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】あ...");
+        navigator.setrightImage(spriteManager.onnanoko_odoroki, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.setrightImage(spriteManager.onnanoko_odoroki, false);
+        navigator.setLeftImage(spriteManager.kantoku_oko, true);
+        navigator.MessageCol("【監督】何やっとるんだ！お前たち、さっさと走れ！");
+        
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【監督】マイちゃん、さっきは大変だったねぇ。そんな時もあるから気にしないでねぇ。");
+        navigator.setLeftImage(spriteManager.kantoku_dere, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】なんかこいつ、俺の時だけデレデレしてる気がするんだが...");
+        navigator.setrightImage(spriteManager.onnanoko_odoroki, true);
+        navigator.setLeftImage(spriteManager.kantoku_dere, false);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("敵チームのパスは繋がり、そのままゴールされてしまった。");
+        navigator.setrightImage(spriteManager.onnanoko_odoroki, false);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノのチームメイトB】切り替えていこう！マイ、パス。");
+        navigator.setLeftImage(spriteManager.ippan_senshu, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("チームメイトはナマケモノへパスを出す。");
+        navigator.setLeftImage(spriteManager.ippan_senshu, false);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        navigator.MessageCol("【ナマケモノ】次は点を取らないと。残り時間も少ないし、どうしよう...");
+        navigator.setLeftImage(spriteManager.onnanoko_shinken, true);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && clickFlag);
+        clickFlag = false;
+        //messageText.SetActive(false);
+
+        select5();
     }
 
     public IEnumerator BadEnd()
