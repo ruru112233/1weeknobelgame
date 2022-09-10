@@ -7,6 +7,7 @@ public class SpriteManager : MonoBehaviour
     public Sprite basuke_court;
     public Sprite basuke_goal;
     public Sprite mori_sleep;
+    public Sprite mori_namakemono;
 
     [Header("ŠÄ“Â—§‚¿ŠG")]
     public Sprite kantoku_oko;
